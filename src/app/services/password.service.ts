@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
-import { LengthStringRegex, DigitsRegex, LettersRegex, SymbolsRegex, EmptyStringRegex, LatinDigitsSymbolsRegex } from '../constants/password-regex.constant';
+
+import {
+  LengthStringRegex,
+  DigitsRegex,
+  LettersRegex,
+  SymbolsRegex,
+  EmptyStringRegex,
+  LatinDigitsSymbolsRegex,
+} from '../constants/password-regex.constant';
 import { PasswordState } from '../interfaces/password-state.interface';
 
 @Injectable({
@@ -19,10 +27,6 @@ export class PasswordService {
 
   private isStrong(value: string): boolean {
     return LettersRegex.test(value) && DigitsRegex.test(value) && SymbolsRegex.test(value);
-  }
-
-  getPassword(event: Event): string {
-    return (event.target as HTMLInputElement).value.trim();
   }
 
   definePasswordComplexity(password: string): PasswordState {
